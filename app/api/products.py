@@ -18,6 +18,7 @@ async def view_product_offers(
     url: str = Query(..., description="The URL of the product to fetch offers for"),
     timeout_limit: int = Query(None, description="Timeout limit for fetching offers in seconds"),
     count_limit: int = Query(None, description="Maximum number of offers to return"),
+    # TODO: Add sorting functionality after set up the functionality in parser prices
     # sort: bool = Query(False, description="Whether to sort offers by price")
 ):
     

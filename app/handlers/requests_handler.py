@@ -20,6 +20,9 @@ class RequestsHandler:
                 async with session.get(url) as response:
                     response.raise_for_status()
                     
+                    if response.status != 200:
+                        raise HTTPException(status_code=response.status, detail=f"Failed to fetch data from {url}")
+                    
                     return await response.text()
             except ClientError:
                 raise HTTPException(status_code=429, detail=f"ClientError: Failed to fetch data from {url}")
