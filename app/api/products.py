@@ -22,7 +22,7 @@ async def view_product_offers(
     # sort: bool = Query(False, description="Whether to sort offers by price")
 ):
     
-    offers_data = await product_parser.collect_data(
+    offers = await product_parser.collect_data(
         url=url,
         timeout_limit=timeout_limit,
         count_limit=count_limit,
@@ -30,5 +30,5 @@ async def view_product_offers(
     
     return ProductResponseSchema(
         url=url,
-        offers=offers_data
+        offers=[OfferSchema(**offer) for offer in offers]
     )

@@ -11,5 +11,5 @@ class OfferSchema(BaseModel):
     is_used: Optional[bool] = None
 
 class ProductResponseSchema(BaseModel):
-    url: str
-    offers: List[OfferSchema]
+    url: Optional[str] = None
+    offers: List[OfferSchema] = []
